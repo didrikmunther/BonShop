@@ -1,0 +1,617 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EDA812602A3C86D400C65B02 /* BonShopApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA8125F2A3C86D400C65B02 /* BonShopApp.swift */; };
+		EDA812622A3C86D400C65B02 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA812612A3C86D400C65B02 /* ContentView.swift */; };
+		EDA812642A3C86D500C65B02 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDA812632A3C86D500C65B02 /* Assets.xcassets */; };
+		EDA812682A3C86D500C65B02 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDA812672A3C86D500C65B02 /* Preview Assets.xcassets */; };
+		EDA812722A3C86D600C65B02 /* BonShopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA812712A3C86D600C65B02 /* BonShopTests.swift */; };
+		EDA8127C2A3C86D600C65B02 /* BonShopUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA8127B2A3C86D600C65B02 /* BonShopUITests.swift */; };
+		EDA8127E2A3C86D600C65B02 /* BonShopUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA8127D2A3C86D600C65B02 /* BonShopUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EDA8126E2A3C86D600C65B02 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EDA812542A3C86D300C65B02 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EDA8125B2A3C86D400C65B02;
+			remoteInfo = BonShop;
+		};
+		EDA812782A3C86D600C65B02 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EDA812542A3C86D300C65B02 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EDA8125B2A3C86D400C65B02;
+			remoteInfo = BonShop;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EDA8125C2A3C86D400C65B02 /* BonShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BonShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDA8125F2A3C86D400C65B02 /* BonShopApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonShopApp.swift; sourceTree = "<group>"; };
+		EDA812612A3C86D400C65B02 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		EDA812632A3C86D500C65B02 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EDA812652A3C86D500C65B02 /* BonShop.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BonShop.entitlements; sourceTree = "<group>"; };
+		EDA812672A3C86D500C65B02 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		EDA8126D2A3C86D600C65B02 /* BonShopTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BonShopTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDA812712A3C86D600C65B02 /* BonShopTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonShopTests.swift; sourceTree = "<group>"; };
+		EDA812772A3C86D600C65B02 /* BonShopUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BonShopUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDA8127B2A3C86D600C65B02 /* BonShopUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonShopUITests.swift; sourceTree = "<group>"; };
+		EDA8127D2A3C86D600C65B02 /* BonShopUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonShopUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EDA812592A3C86D400C65B02 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDA8126A2A3C86D600C65B02 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDA812742A3C86D600C65B02 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EDA812532A3C86D300C65B02 = {
+			isa = PBXGroup;
+			children = (
+				EDA8125E2A3C86D400C65B02 /* BonShop */,
+				EDA812702A3C86D600C65B02 /* BonShopTests */,
+				EDA8127A2A3C86D600C65B02 /* BonShopUITests */,
+				EDA8125D2A3C86D400C65B02 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EDA8125D2A3C86D400C65B02 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EDA8125C2A3C86D400C65B02 /* BonShop.app */,
+				EDA8126D2A3C86D600C65B02 /* BonShopTests.xctest */,
+				EDA812772A3C86D600C65B02 /* BonShopUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EDA8125E2A3C86D400C65B02 /* BonShop */ = {
+			isa = PBXGroup;
+			children = (
+				EDA8125F2A3C86D400C65B02 /* BonShopApp.swift */,
+				EDA812612A3C86D400C65B02 /* ContentView.swift */,
+				EDA812632A3C86D500C65B02 /* Assets.xcassets */,
+				EDA812652A3C86D500C65B02 /* BonShop.entitlements */,
+				EDA812662A3C86D500C65B02 /* Preview Content */,
+			);
+			path = BonShop;
+			sourceTree = "<group>";
+		};
+		EDA812662A3C86D500C65B02 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				EDA812672A3C86D500C65B02 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		EDA812702A3C86D600C65B02 /* BonShopTests */ = {
+			isa = PBXGroup;
+			children = (
+				EDA812712A3C86D600C65B02 /* BonShopTests.swift */,
+			);
+			path = BonShopTests;
+			sourceTree = "<group>";
+		};
+		EDA8127A2A3C86D600C65B02 /* BonShopUITests */ = {
+			isa = PBXGroup;
+			children = (
+				EDA8127B2A3C86D600C65B02 /* BonShopUITests.swift */,
+				EDA8127D2A3C86D600C65B02 /* BonShopUITestsLaunchTests.swift */,
+			);
+			path = BonShopUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EDA8125B2A3C86D400C65B02 /* BonShop */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EDA812812A3C86D600C65B02 /* Build configuration list for PBXNativeTarget "BonShop" */;
+			buildPhases = (
+				EDA812582A3C86D400C65B02 /* Sources */,
+				EDA812592A3C86D400C65B02 /* Frameworks */,
+				EDA8125A2A3C86D400C65B02 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BonShop;
+			productName = BonShop;
+			productReference = EDA8125C2A3C86D400C65B02 /* BonShop.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EDA8126C2A3C86D600C65B02 /* BonShopTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EDA812842A3C86D600C65B02 /* Build configuration list for PBXNativeTarget "BonShopTests" */;
+			buildPhases = (
+				EDA812692A3C86D600C65B02 /* Sources */,
+				EDA8126A2A3C86D600C65B02 /* Frameworks */,
+				EDA8126B2A3C86D600C65B02 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EDA8126F2A3C86D600C65B02 /* PBXTargetDependency */,
+			);
+			name = BonShopTests;
+			productName = BonShopTests;
+			productReference = EDA8126D2A3C86D600C65B02 /* BonShopTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EDA812762A3C86D600C65B02 /* BonShopUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EDA812872A3C86D600C65B02 /* Build configuration list for PBXNativeTarget "BonShopUITests" */;
+			buildPhases = (
+				EDA812732A3C86D600C65B02 /* Sources */,
+				EDA812742A3C86D600C65B02 /* Frameworks */,
+				EDA812752A3C86D600C65B02 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EDA812792A3C86D600C65B02 /* PBXTargetDependency */,
+			);
+			name = BonShopUITests;
+			productName = BonShopUITests;
+			productReference = EDA812772A3C86D600C65B02 /* BonShopUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EDA812542A3C86D300C65B02 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					EDA8125B2A3C86D400C65B02 = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+					EDA8126C2A3C86D600C65B02 = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = EDA8125B2A3C86D400C65B02;
+					};
+					EDA812762A3C86D600C65B02 = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = EDA8125B2A3C86D400C65B02;
+					};
+				};
+			};
+			buildConfigurationList = EDA812572A3C86D300C65B02 /* Build configuration list for PBXProject "BonShop" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EDA812532A3C86D300C65B02;
+			productRefGroup = EDA8125D2A3C86D400C65B02 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EDA8125B2A3C86D400C65B02 /* BonShop */,
+				EDA8126C2A3C86D600C65B02 /* BonShopTests */,
+				EDA812762A3C86D600C65B02 /* BonShopUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EDA8125A2A3C86D400C65B02 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDA812682A3C86D500C65B02 /* Preview Assets.xcassets in Resources */,
+				EDA812642A3C86D500C65B02 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDA8126B2A3C86D600C65B02 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDA812752A3C86D600C65B02 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EDA812582A3C86D400C65B02 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDA812622A3C86D400C65B02 /* ContentView.swift in Sources */,
+				EDA812602A3C86D400C65B02 /* BonShopApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDA812692A3C86D600C65B02 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDA812722A3C86D600C65B02 /* BonShopTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDA812732A3C86D600C65B02 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDA8127E2A3C86D600C65B02 /* BonShopUITestsLaunchTests.swift in Sources */,
+				EDA8127C2A3C86D600C65B02 /* BonShopUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EDA8126F2A3C86D600C65B02 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EDA8125B2A3C86D400C65B02 /* BonShop */;
+			targetProxy = EDA8126E2A3C86D600C65B02 /* PBXContainerItemProxy */;
+		};
+		EDA812792A3C86D600C65B02 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EDA8125B2A3C86D400C65B02 /* BonShop */;
+			targetProxy = EDA812782A3C86D600C65B02 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		EDA8127F2A3C86D600C65B02 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EDA812802A3C86D600C65B02 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		EDA812822A3C86D600C65B02 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BonShop/BonShop.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"BonShop/Preview Content\"";
+				DEVELOPMENT_TEAM = Q7TDNU7VPV;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Didrik.BonShop;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EDA812832A3C86D600C65B02 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BonShop/BonShop.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"BonShop/Preview Content\"";
+				DEVELOPMENT_TEAM = Q7TDNU7VPV;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Didrik.BonShop;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		EDA812852A3C86D600C65B02 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Q7TDNU7VPV;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Didrik.BonShopTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BonShop.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BonShop";
+			};
+			name = Debug;
+		};
+		EDA812862A3C86D600C65B02 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Q7TDNU7VPV;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Didrik.BonShopTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BonShop.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BonShop";
+			};
+			name = Release;
+		};
+		EDA812882A3C86D600C65B02 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Q7TDNU7VPV;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Didrik.BonShopUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BonShop;
+			};
+			name = Debug;
+		};
+		EDA812892A3C86D600C65B02 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Q7TDNU7VPV;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Didrik.BonShopUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BonShop;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EDA812572A3C86D300C65B02 /* Build configuration list for PBXProject "BonShop" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDA8127F2A3C86D600C65B02 /* Debug */,
+				EDA812802A3C86D600C65B02 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EDA812812A3C86D600C65B02 /* Build configuration list for PBXNativeTarget "BonShop" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDA812822A3C86D600C65B02 /* Debug */,
+				EDA812832A3C86D600C65B02 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EDA812842A3C86D600C65B02 /* Build configuration list for PBXNativeTarget "BonShopTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDA812852A3C86D600C65B02 /* Debug */,
+				EDA812862A3C86D600C65B02 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EDA812872A3C86D600C65B02 /* Build configuration list for PBXNativeTarget "BonShopUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDA812882A3C86D600C65B02 /* Debug */,
+				EDA812892A3C86D600C65B02 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EDA812542A3C86D300C65B02 /* Project object */;
+}
