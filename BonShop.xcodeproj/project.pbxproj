@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED734EAF2A407BE200DBD01A /* Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED734EAE2A407BE200DBD01A /* Items.swift */; };
+		ED734EB12A407C2300DBD01A /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED734EB02A407C2300DBD01A /* List.swift */; };
 		EDA812602A3C86D400C65B02 /* BonShopApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA8125F2A3C86D400C65B02 /* BonShopApp.swift */; };
 		EDA812622A3C86D400C65B02 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA812612A3C86D400C65B02 /* ContentView.swift */; };
 		EDA812642A3C86D500C65B02 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDA812632A3C86D500C65B02 /* Assets.xcassets */; };
@@ -34,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		ED734EAE2A407BE200DBD01A /* Items.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Items.swift; sourceTree = "<group>"; };
+		ED734EB02A407C2300DBD01A /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		EDA8125C2A3C86D400C65B02 /* BonShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BonShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDA8125F2A3C86D400C65B02 /* BonShopApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonShopApp.swift; sourceTree = "<group>"; };
 		EDA812612A3C86D400C65B02 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -100,6 +104,8 @@
 				EDA812632A3C86D500C65B02 /* Assets.xcassets */,
 				EDA812652A3C86D500C65B02 /* BonShop.entitlements */,
 				EDA812662A3C86D500C65B02 /* Preview Content */,
+				ED734EAE2A407BE200DBD01A /* Items.swift */,
+				ED734EB02A407C2300DBD01A /* List.swift */,
 			);
 			path = BonShop;
 			sourceTree = "<group>";
@@ -260,6 +266,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				EDA812622A3C86D400C65B02 /* ContentView.swift in Sources */,
+				ED734EB12A407C2300DBD01A /* List.swift in Sources */,
+				ED734EAF2A407BE200DBD01A /* Items.swift in Sources */,
 				EDA812602A3C86D400C65B02 /* BonShopApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
