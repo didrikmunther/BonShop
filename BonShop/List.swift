@@ -57,6 +57,8 @@ struct ListEdit: View {
     @Binding var list: ListElement
     @Binding var items: [ItemElement]
     
+    @State var onDelete: () async -> Void = {}
+    
     var body: some View {
         NavigationStack {
             List {
@@ -83,13 +85,16 @@ struct ListEdit: View {
                 }
             }
             Button("Delete", role: .destructive) {
-                if let index = lists.firstIndex(where: { element in
-                    element.id == list.id
-                }) {
-                    lists.remove(at: index)
-                }
+                //                if let index = lists.firstIndex(where: { element in
+                //                    element.id == list.id
+                //                }) {
+                //                    lists.remove(at: index)
+                //                }
                 
-                dismiss()
+                Task {
+                    await onDelete()
+                    dismiss()
+                }
             }
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
@@ -144,7 +149,23 @@ struct ListsView: View {
                 }
             }
             .sheet(isPresented: $isAddingItems) {
-                ListEdit(lists: $lists, list: $lists[selectedList], items: $items)
+                let list = $lists[selectedList]
+                let onDelete = {
+                    if let index = lists.firstIndex(where: { element in
+                        element.id == list.id
+                    }) {
+                        if index == lists.count - 1 {
+                            selectedList = index - 1;
+                        }
+                        
+                        lists.remove(at: index)
+                    }
+                }
+                
+                ListEdit(lists: $lists,
+                         list: list,
+                         items: $items,
+                         onDelete: onDelete)
             }
         }
     }
