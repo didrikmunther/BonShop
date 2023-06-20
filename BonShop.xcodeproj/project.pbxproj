@@ -16,6 +16,7 @@
 		EDA812722A3C86D600C65B02 /* BonShopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA812712A3C86D600C65B02 /* BonShopTests.swift */; };
 		EDA8127C2A3C86D600C65B02 /* BonShopUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA8127B2A3C86D600C65B02 /* BonShopUITests.swift */; };
 		EDA8127E2A3C86D600C65B02 /* BonShopUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA8127D2A3C86D600C65B02 /* BonShopUITestsLaunchTests.swift */; };
+		EDDE72032A41BAE700CC6BBB /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDE72022A41BAE700CC6BBB /* Store.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		EDA812772A3C86D600C65B02 /* BonShopUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BonShopUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDA8127B2A3C86D600C65B02 /* BonShopUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonShopUITests.swift; sourceTree = "<group>"; };
 		EDA8127D2A3C86D600C65B02 /* BonShopUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonShopUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		EDDE72022A41BAE700CC6BBB /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				EDA812662A3C86D500C65B02 /* Preview Content */,
 				ED734EAE2A407BE200DBD01A /* Items.swift */,
 				ED734EB02A407C2300DBD01A /* List.swift */,
+				EDDE72022A41BAE700CC6BBB /* Store.swift */,
 			);
 			path = BonShop;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDDE72032A41BAE700CC6BBB /* Store.swift in Sources */,
 				EDA812622A3C86D400C65B02 /* ContentView.swift in Sources */,
 				ED734EB12A407C2300DBD01A /* List.swift in Sources */,
 				ED734EAF2A407BE200DBD01A /* Items.swift in Sources */,
