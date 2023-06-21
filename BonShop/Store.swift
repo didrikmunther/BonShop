@@ -35,22 +35,12 @@ struct AppState: StateFul {
     }
 }
 
-enum AppActions {
-    case toggleListItem(list: UUID, item: UUID, toggled: Bool)      // Should the item be in the list?
-    case setListItemStatus(list: UUID, item: UUID, toggled: Bool)   // Is the item checked (done)?
-    case setSelectedListIndex(index: Int)
-    case addList
-    case deleteList(list: UUID)
-}
-
-typealias AppStore = Store<AppState, AppActions>
-
 protocol StateFul {
     init()
 }
 
 actor Store<S: StateFul, Action>: ObservableObject {
-    typealias Reducer = (S, Action) -> S
+    typealias Reducer = (S, Action, @escaping (Action) async -> Void) -> S
     
     @MainActor @Published private(set) var state: S = .init()
     private let reducer: Reducer
@@ -62,7 +52,7 @@ actor Store<S: StateFul, Action>: ObservableObject {
     func dispatch(_ action: Action) async {
         await MainActor.run {
             let currentState = state
-            let newState = reducer(currentState, action)
+            let newState = reducer(currentState, action, self.dispatch)
             state = newState
         }
     }

@@ -22,11 +22,15 @@ struct ItemElement: Identifiable {
 }
 
 struct ItemEdit: View {
+    typealias SubmitCallback = (ItemElement) async -> Void
+    
     @Environment(\.dismiss) private var dismiss
     
-    @State var item: ItemElement
-    @State var onSubmit: (ItemElement) async -> Void = {item in}
-    
+    @EnvironmentObject private var store: AppStore
+
+    @State var item: ItemElement = .empty
+    var onSubmit: SubmitCallback = { _ in }
+
     var body: some View {
         Form {
             Section(header: Text("Item")) {
@@ -42,7 +46,7 @@ struct ItemEdit: View {
             ToolbarItem(placement: .confirmationAction) {
                 Button("Done") {
                     Task {
-                        await onSubmit(ItemElement(item.name))
+                        await onSubmit(item)
                         dismiss()
                     }
                 }
@@ -52,11 +56,11 @@ struct ItemEdit: View {
 }
 
 struct ItemView: View {
-    @Binding var item: ItemElement
-    
+    let item: ItemElement
+
     @State var isEditing: Bool = false
     @Environment(\.dismiss) private var dismiss
-    
+
     var body: some View {
         Form {
             Section(header: Text("Item")) {
@@ -72,7 +76,8 @@ struct ItemView: View {
         .sheet(isPresented: $isEditing) {
             NavigationStack {
                 ItemEdit(item: item, onSubmit: { newItem in
-                    item.name = newItem.name
+                    print("new item", newItem)
+//                    item.name = newItem.name
                 })
                 .navigationTitle("Edit item")
             }
@@ -81,7 +86,7 @@ struct ItemView: View {
 }
 
 struct ItemsView: View {
-    @Binding var items: [ItemElement]
+    @EnvironmentObject private var store: AppStore
     
     @State private var isCreating: Bool = false
     
@@ -89,19 +94,19 @@ struct ItemsView: View {
         NavigationStack {
             TabView {
                 List {
-                    ForEach($items) { item in
+                    ForEach(store.state.items) { item in
                         NavigationLink(destination: ItemView(item: item)) {
                             HStack {
-                                Text(item.name.wrappedValue)
+                                Text(item.name)
                             }
                         }
                     }
-                    .onMove { indexSet, offset in
-                        items.move(fromOffsets: indexSet, toOffset: offset)
-                    }
-                    .onDelete { indexSet in
-                        items.remove(atOffsets: indexSet)
-                    }
+//                    .onMove { indexSet, offset in
+//                        store.state.items.move(fromOffsets: indexSet, toOffset: offset)
+//                    }
+//                    .onDelete { indexSet in
+//                        store.state.items.remove(atOffsets: indexSet)
+//                    }
                 }
             }
             .navigationTitle("Items")
@@ -120,10 +125,10 @@ struct ItemsView: View {
             }
             .sheet(isPresented: $isCreating) {
                 NavigationStack {
-                    ItemEdit(item: .empty, onSubmit: { newItem in
-                        items.append(newItem)
-                    })
-                    .navigationTitle("Create new item")
+//                    ItemEdit(item: .empty, onSubmit: { newItem in
+////                        items.append(newItem)
+//                    })
+//                    .navigationTitle("Create new item")
                 }
             }
         }

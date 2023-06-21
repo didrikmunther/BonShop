@@ -72,22 +72,22 @@ struct ListView: View {
 }
 
 struct ListEditItem: View {
-    @Binding var list: ListElement
-    @Binding var item: ItemElement
+    var list: ListElement
+    var item: ItemElement
     
     @EnvironmentObject private var store: AppStore
     
     private var isOn: Binding<Bool> { Binding(
         get: {
-            if let _ = store.state.lists.first(where: { el in
-                el.id == list.id
-            }) {
-                return true
+            if let exists = store.state.lists.first(where: { $0.id == list.id })
+                .flatMap({ $0.items.contains(where: { $0.item.id == item.id }) }) {
+                return exists
             } else {
                 return false
             }
         },
         set: { toggled in
+            print(toggled)
             Task {
                 await store.dispatch(.toggleListItem(list: list.id, item: item.id, toggled: toggled))
             }
@@ -98,26 +98,6 @@ struct ListEditItem: View {
         Toggle(isOn: isOn) {
             Text(item.name)
         }
-        
-//        Toggle(isOn: Binding<Bool>(
-//            get: {
-//                $list.items.contains { listElement in
-//                    listElement.item.id == item.id
-//                }
-//            }, set: {isActive in
-//                if isActive {
-//                    list.items.append(ListItemElement(item))
-//                } else {
-//                    if let index = list.items.firstIndex(where: {element in
-//                        element.item.id == item.id
-//                    }) {
-//                        list.items.remove(at: index)
-//                    }
-//                }
-//            }
-//        )) {
-//            Text(item.name)
-//        }
     }
 }
 
@@ -126,13 +106,13 @@ struct ListEdit: View {
     
     @EnvironmentObject private var store: AppStore
     
-    @Binding var list: ListElement
+    var list: ListElement
     
     var body: some View {
         NavigationStack {
             List {
                 ForEach(store.state.items) { item in
-                    ListEditItem(list: $list, item: .constant(item))
+                    ListEditItem(list: list, item: item)
                 }
             }
             Button("Delete", role: .destructive) {
@@ -204,7 +184,7 @@ struct ListsView: View {
                 }
             }
             .sheet(isPresented: $isAddingItems) {
-                ListEdit(list: .constant(store.state.activeList))
+                ListEdit(list: store.state.activeList)
             }
         }
     }
