@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED491B6D2A41F04A00F19A6E /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED491B6C2A41F04A00F19A6E /* Platform.swift */; };
 		ED734EAF2A407BE200DBD01A /* Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED734EAE2A407BE200DBD01A /* Items.swift */; };
 		ED734EB12A407C2300DBD01A /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED734EB02A407C2300DBD01A /* List.swift */; };
 		EDA812602A3C86D400C65B02 /* BonShopApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA8125F2A3C86D400C65B02 /* BonShopApp.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		ED491B6C2A41F04A00F19A6E /* Platform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
 		ED734EAE2A407BE200DBD01A /* Items.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Items.swift; sourceTree = "<group>"; };
 		ED734EB02A407C2300DBD01A /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		EDA8125C2A3C86D400C65B02 /* BonShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BonShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,6 +108,7 @@
 				EDA812662A3C86D500C65B02 /* Preview Content */,
 				ED734EAE2A407BE200DBD01A /* Items.swift */,
 				ED734EB02A407C2300DBD01A /* List.swift */,
+				ED491B6C2A41F04A00F19A6E /* Platform.swift */,
 			);
 			path = BonShop;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED491B6D2A41F04A00F19A6E /* Platform.swift in Sources */,
 				EDA812622A3C86D400C65B02 /* ContentView.swift in Sources */,
 				ED734EB12A407C2300DBD01A /* List.swift in Sources */,
 				ED734EAF2A407BE200DBD01A /* Items.swift in Sources */,

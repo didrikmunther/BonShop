@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct ListItemElement: Identifiable {
-    let id = UUID()
+    typealias ListItemID = UUID
+    
+    let id: ListItemID = UUID()
     var item: ItemElement
     var done = false
     
@@ -85,12 +87,6 @@ struct ListEdit: View {
                 }
             }
             Button("Delete", role: .destructive) {
-                //                if let index = lists.firstIndex(where: { element in
-                //                    element.id == list.id
-                //                }) {
-                //                    lists.remove(at: index)
-                //                }
-                
                 Task {
                     await onDelete()
                     dismiss()
@@ -115,8 +111,10 @@ struct ListsView: View {
     @State private var isAddingItems = false
     
     func setupAppearance() {
+#if os(iOS)
         UIPageControl.appearance().currentPageIndicatorTintColor = .black
         UIPageControl.appearance().pageIndicatorTintColor = .black.withAlphaComponent(0.2)
+#endif
     }
     
     var body: some View {
@@ -127,19 +125,18 @@ struct ListsView: View {
                 }
             }
             .navigationTitle("Lists")
-            .tabViewStyle(.page)
             .onAppear {
                 setupAppearance()
             }
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
+                ToolbarItem {
                     Button(action: {
                         isAddingItems = true
                     }) {
                         Text("Edit")
                     }
                 }
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem {
                     Button(action: {
                         lists.append(ListElement(items: [ListItemElement(items[0])]))
                         selectedList = lists.count - 1
@@ -167,6 +164,9 @@ struct ListsView: View {
                          items: $items,
                          onDelete: onDelete)
             }
+#if os(iOS)
+            .tabViewStyle(.page)
+#endif
         }
     }
 }

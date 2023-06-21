@@ -105,19 +105,19 @@ struct ItemsView: View {
                 }
             }
             .navigationTitle("Items")
-            .tabViewStyle(.page)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    EditButton()
-                }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        isCreating = true
-                    }) {
-                        Image(systemName: "plus")
-                    }
-                }
-            }
+//            .tabViewStyle(.page)
+//            .toolbar {
+//                ToolbarItem(placement: .navigationBarLeading) {
+//                    EditButton()
+//                }
+//                ToolbarItem(placement: .navigationBarTrailing) {
+//                    Button(action: {
+//                        isCreating = true
+//                    }) {
+//                        Image(systemName: "plus")
+//                    }
+//                }
+//            }
             .sheet(isPresented: $isCreating) {
                 NavigationStack {
                     ItemEdit(item: .empty, onSubmit: { newItem in
