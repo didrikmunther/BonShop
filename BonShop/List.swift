@@ -92,9 +92,7 @@ struct ListEditRow: View {
             }
         )) {
             NavigationLink(destination: ItemView(item: $item)) {
-                HStack {
-                    Text(item.name)
-                }
+                Text(item.name)
             }
             .navigationTitle("Edit List")
         }
@@ -110,16 +108,19 @@ struct ListEdit: View {
     var onDelete: () async -> Void = {}
     
     var body: some View {
+        let items = withAnimation {
+            $state.items.filter({ $item in
+                !item.deleted || list.items.contains(where: { $0.item == item.id })
+            })
+        }
+        
         NavigationStack {
             List {
-                let items = $state.items.filter({ $item in
-                    !item.deleted || list.items.contains(where: { $0.item == item.id })
-                })
-                
-                ForEach(items) { $item in
+                ForEach(items, id: \.id) { $item in
                     ListEditRow(list: $list, item: $item)
                 }
             }
+            
             Button("Delete", role: .destructive) {
                 Task {
                     state.deleteList(list.id)

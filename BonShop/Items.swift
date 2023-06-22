@@ -30,11 +30,6 @@ struct ItemElement: Equatable, Identifiable, Hashable {
     static var empty: ItemElement {
         ItemElement("")
     }
-    
-    static func == (lhs: ItemElement, rhs: ItemElement) -> Bool {
-       return lhs.id == rhs.id &&
-        lhs.deleted == rhs.deleted
-    }
 }
 
 struct ItemEdit: View {
@@ -42,8 +37,10 @@ struct ItemEdit: View {
     
     @EnvironmentObject private var state: AppState
     
-    @Binding var item: ItemElement
-    var onSubmit: (ItemElement) -> Void = {item in}
+    @State var item: ItemElement
+    var onSubmit: (ItemElement) async -> Void = {item in}
+    var onDelete: (ItemElement) async -> Void = {item in}
+    var onRestore: (ItemElement) async -> Void = {item in}
     
     var body: some View {
         Form {
@@ -60,26 +57,32 @@ struct ItemEdit: View {
             }
             ToolbarItem(placement: .confirmationAction) {
                 Button("Done") {
-                    onSubmit(item)
-                    dismiss()
+                    Task {
+                        await onSubmit(item)
+                        dismiss()
+                    }
                 }
             }
         }
         
         if item.deleted {
             Button("Restore") {
-                item.deleted = false
-                onSubmit(item)
-                dismiss()
+                Task {
+                    item.deleted = false
+                    await onRestore(item)
+                    dismiss()
+                }
             }
         }
-//        else {
+        else {
 //            Button("Delete", role: .destructive) {
-//                item.deleted = true
-//                onSubmit(item)
-//                dismiss()
+//                Task {
+//                    item.deleted = true
+//                    await onDelete(item)
+//                    dismiss()
+//                }
 //            }
-//        }
+        }
     }
 }
 
@@ -112,9 +115,10 @@ struct ItemView: View {
         }
         .sheet(isPresented: $isEditing) {
             NavigationStack {
-                ItemEdit(item: $item, onSubmit: { newItem in
-                    state.updateItem(newItem)
-                })
+                ItemEdit(item: item,
+                         onSubmit: state.updateItem,
+                         onDelete: state.updateItem,
+                         onRestore: state.updateItem)
                 .navigationTitle("Edit item")
             }
         }
@@ -130,7 +134,11 @@ struct ItemsView: View {
         NavigationStack {
             TabView {
                 List {
-                    ForEach($state.items.filter({ $item in !item.deleted })) { $item in
+                    let items = $state.items.filter({ $item in
+                        !item.deleted
+                    })
+                    
+                    ForEach(items) { $item in
                         NavigationLink(destination: ItemView(item: $item)) {
                             Text(item.name)
                         }
@@ -159,9 +167,7 @@ struct ItemsView: View {
             }
             .sheet(isPresented: $isCreating) {
                 NavigationStack {
-                    ItemEdit(item: .constant(.empty), onSubmit: { newItem in
-                        state.addItem(newItem)
-                    })
+                    ItemEdit(item: .empty, onSubmit: state.addItem)
                     .navigationTitle("Create new item")
                 }
             }
