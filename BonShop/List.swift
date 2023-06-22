@@ -7,14 +7,14 @@
 
 import SwiftUI
 
+typealias ListItemID = UUID
+
 struct ListItemElement: Identifiable {
-    typealias ListItemID = UUID
-    
     let id: ListItemID = UUID()
-    var item: ItemElement
+    var item: ItemID
     var done = false
     
-    init(_ item: ItemElement) {
+    init(_ item: ItemID) {
         self.item = item
     }
 }
@@ -22,6 +22,10 @@ struct ListItemElement: Identifiable {
 struct ListElement: Identifiable {
     var items: [ListItemElement]
     let id = UUID()
+    
+    init(items: [ListItemElement]) {
+        self.items = items
+    }
 }
 
 struct iOSCheckboxToggleStyle: ToggleStyle {
@@ -38,16 +42,61 @@ struct iOSCheckboxToggleStyle: ToggleStyle {
 }
 
 struct ListView: View {
-    @Binding var items: [ListItemElement]
+    @EnvironmentObject private var state: AppState
     
+    var list: ListElement
     @State private var multiSelection = Set<UUID>()
     
     var body: some View {
-        List($items, selection: $multiSelection) { $item in
-            Toggle(isOn: $item.done) {
-                Text(item.item.name)
+        List(list.items, selection: $multiSelection) { item in
+            Toggle(isOn: Binding<Bool>(
+                get: {
+                    item.done
+                }, set: { isActive in
+                    var newItem = item
+                    newItem.done = isActive
+                    state.updateListItem(list, newItem)
+                }
+            )) {
+                Text(state.items.first(where: { $0.id == item.item }).flatMap({ item in
+                    item.name
+                }) ?? "N/A")
             }
             .toggleStyle(iOSCheckboxToggleStyle())
+        }
+    }
+}
+
+struct ListEditRow: View {
+    @EnvironmentObject private var state: AppState
+    
+    @Binding var list: ListElement
+    @Binding var item: ItemElement
+    
+    var body: some View {
+        Toggle(isOn: Binding<Bool>(
+            get: {
+                list.items.contains { listElement in
+                    listElement.item == item.id
+                }
+            }, set: {isActive in
+                if isActive {
+                    state.addListItem(list, ListItemElement(item.id))
+                } else {
+                    if let listElement = list.items.first(where: { listElement in
+                        listElement.item == item.id
+                    }) {
+                        state.deleteListItem(list, listElement)
+                    }
+                }
+            }
+        )) {
+            NavigationLink(destination: ItemView(item: $item)) {
+                HStack {
+                    Text(item.name)
+                }
+            }
+            .navigationTitle("Edit List")
         }
     }
 }
@@ -55,40 +104,25 @@ struct ListView: View {
 struct ListEdit: View {
     @Environment(\.dismiss) var dismiss
     
-    @Binding var lists: [ListElement]
-    @Binding var list: ListElement
-    @Binding var items: [ItemElement]
+    @EnvironmentObject private var state: AppState
     
-    @State var onDelete: () async -> Void = {}
+    @Binding var list: ListElement
+    var onDelete: () async -> Void = {}
     
     var body: some View {
         NavigationStack {
             List {
-                ForEach($items) { $item in
-                    Toggle(isOn: Binding<Bool>(
-                        get: {
-                            $list.items.contains { listElement in
-                                listElement.item.id == item.id
-                            }
-                        }, set: {isActive in
-                            if isActive {
-                                list.items.append(ListItemElement(item))
-                            } else {
-                                if let index = list.items.firstIndex(where: {element in
-                                    element.item.id == item.id
-                                }) {
-                                    list.items.remove(at: index)
-                                }
-                            }
-                        }
-                    )) {
-                        Text(item.name)
-                    }
+                let items = $state.items.filter({ $item in
+                    !item.deleted || list.items.contains(where: { $0.item == item.id })
+                })
+                
+                ForEach(items) { $item in
+                    ListEditRow(list: $list, item: $item)
                 }
             }
             Button("Delete", role: .destructive) {
                 Task {
-                    await onDelete()
+                    state.deleteList(list.id)
                     dismiss()
                 }
             }
@@ -104,69 +138,66 @@ struct ListEdit: View {
 }
 
 struct ListsView: View {
-    @Binding var lists: [ListElement]
-    @Binding var items: [ItemElement]
+    @EnvironmentObject private var state: AppState
     
     @State private var selectedList = 0
     @State private var isAddingItems = false
     
-    func setupAppearance() {
 #if os(iOS)
+    func setupAppearance() {
         UIPageControl.appearance().currentPageIndicatorTintColor = .black
         UIPageControl.appearance().pageIndicatorTintColor = .black.withAlphaComponent(0.2)
-#endif
     }
+#endif
     
     var body: some View {
         NavigationStack {
             TabView(selection: $selectedList) {
-                ForEach(Array(zip($lists.indices, $lists)), id: \.0) { (index, list) in
-                    ListView(items: list.items).tag(index)
+                ForEach(Array(zip(state.lists.indices, state.lists)), id: \.0) { (index, list) in
+                    ListView(list: list).tag(index)
                 }
             }
             .navigationTitle("Lists")
-            .onAppear {
-                setupAppearance()
-            }
             .toolbar {
-                ToolbarItem {
+                ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
                         isAddingItems = true
                     }) {
                         Text("Edit")
                     }
                 }
-                ToolbarItem {
+                ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-                        lists.append(ListElement(items: [ListItemElement(items[0])]))
-                        selectedList = lists.count - 1
+                        state.createList()
+                        selectedList = state.lists.count - 1
                     }) {
                         Image(systemName: "plus")
                     }
                 }
             }
             .sheet(isPresented: $isAddingItems) {
-                let list = $lists[selectedList]
+                let list = $state.lists[selectedList]
                 let onDelete = {
-                    if let index = lists.firstIndex(where: { element in
+                    if let index = state.lists.firstIndex(where: { element in
                         element.id == list.id
                     }) {
-                        if index == lists.count - 1 {
+                        if index == state.lists.count - 1 {
                             selectedList = index - 1;
                         }
-                        
-                        lists.remove(at: index)
+
+                        state.deleteList(list.id)
                     }
                 }
                 
-                ListEdit(lists: $lists,
-                         list: list,
-                         items: $items,
-                         onDelete: onDelete)
+                ListEdit(list: list, onDelete: onDelete)
             }
-#if os(iOS)
-            .tabViewStyle(.page)
-#endif
+            .iOS({
+                $0
+                    .tabViewStyle(.page)
+                    .onAppear {
+                        setupAppearance()
+                    }
+            })
         }
     }
 }

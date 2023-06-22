@@ -7,30 +7,49 @@
 
 import SwiftUI
 
-struct ItemElement: Identifiable {
-    var name: String
-    let id: UUID
+typealias ItemID = UUID
+
+struct ItemElement: Equatable, Identifiable, Hashable {
+    var baseName: String
+    let id: ItemID
+    var deleted: Bool = false
     
-    init(_ name: String, id: UUID = UUID()) {
-        self.name = name
+    var name: String {
+        if !deleted {
+            return baseName
+        } else {
+            return "\(baseName) (Deleted)"
+        }
+    }
+    
+    init(_ name: String, id: ItemID = ItemID()) {
+        self.baseName = name
         self.id = id
     }
     
-    static var empty: Self {
+    static var empty: ItemElement {
         ItemElement("")
+    }
+    
+    static func == (lhs: ItemElement, rhs: ItemElement) -> Bool {
+       return lhs.id == rhs.id &&
+        lhs.deleted == rhs.deleted
     }
 }
 
 struct ItemEdit: View {
     @Environment(\.dismiss) private var dismiss
     
-    @State var item: ItemElement
-    @State var onSubmit: (ItemElement) async -> Void = {item in}
+    @EnvironmentObject private var state: AppState
+    
+    @Binding var item: ItemElement
+    var onSubmit: (ItemElement) -> Void = {item in}
     
     var body: some View {
         Form {
             Section(header: Text("Item")) {
-                TextField("Name of item", text: $item.name)
+                TextField("Name of item", text: $item.baseName)
+                
             }
         }
         .toolbar {
@@ -41,26 +60,48 @@ struct ItemEdit: View {
             }
             ToolbarItem(placement: .confirmationAction) {
                 Button("Done") {
-                    Task {
-                        await onSubmit(ItemElement(item.name))
-                        dismiss()
-                    }
+                    onSubmit(item)
+                    dismiss()
                 }
             }
         }
+        
+        if item.deleted {
+            Button("Restore") {
+                item.deleted = false
+                onSubmit(item)
+                dismiss()
+            }
+        }
+//        else {
+//            Button("Delete", role: .destructive) {
+//                item.deleted = true
+//                onSubmit(item)
+//                dismiss()
+//            }
+//        }
     }
 }
 
 struct ItemView: View {
-    @Binding var item: ItemElement
-    
-    @State var isEditing: Bool = false
     @Environment(\.dismiss) private var dismiss
+    
+    @EnvironmentObject private var state: AppState
+    
+    @Binding var item: ItemElement
+    @State var isEditing: Bool = false
     
     var body: some View {
         Form {
             Section(header: Text("Item")) {
-                Text(item.name)
+                Text(item.baseName)
+            }
+            
+            if item.deleted {
+                Section(header: Text("Status")) {
+                    Text("Item is deleted")
+                        .foregroundColor(.red)
+                }
             }
         }
         .navigationTitle("View item")
@@ -71,8 +112,8 @@ struct ItemView: View {
         }
         .sheet(isPresented: $isEditing) {
             NavigationStack {
-                ItemEdit(item: item, onSubmit: { newItem in
-                    item.name = newItem.name
+                ItemEdit(item: $item, onSubmit: { newItem in
+                    state.updateItem(newItem)
                 })
                 .navigationTitle("Edit item")
             }
@@ -81,7 +122,7 @@ struct ItemView: View {
 }
 
 struct ItemsView: View {
-    @Binding var items: [ItemElement]
+    @EnvironmentObject private var state: AppState
     
     @State private var isCreating: Bool = false
     
@@ -89,39 +130,37 @@ struct ItemsView: View {
         NavigationStack {
             TabView {
                 List {
-                    ForEach($items) { item in
-                        NavigationLink(destination: ItemView(item: item)) {
-                            HStack {
-                                Text(item.name.wrappedValue)
-                            }
+                    ForEach($state.items.filter({ $item in !item.deleted })) { $item in
+                        NavigationLink(destination: ItemView(item: $item)) {
+                            Text(item.name)
                         }
                     }
-                    .onMove { indexSet, offset in
-                        items.move(fromOffsets: indexSet, toOffset: offset)
+                    .onMove { fromOffsets, toOffset in
+                        state.moveItems(fromOffsets: fromOffsets, toOffset: toOffset)
                     }
                     .onDelete { indexSet in
-                        items.remove(atOffsets: indexSet)
+                        state.deleteItems(atOffsets: indexSet)
                     }
                 }
             }
             .navigationTitle("Items")
-//            .tabViewStyle(.page)
-//            .toolbar {
-//                ToolbarItem(placement: .navigationBarLeading) {
-//                    EditButton()
-//                }
-//                ToolbarItem(placement: .navigationBarTrailing) {
-//                    Button(action: {
-//                        isCreating = true
-//                    }) {
-//                        Image(systemName: "plus")
-//                    }
-//                }
-//            }
+            .tabViewStyle(.page)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    EditButton()
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        isCreating = true
+                    }) {
+                        Image(systemName: "plus")
+                    }
+                }
+            }
             .sheet(isPresented: $isCreating) {
                 NavigationStack {
-                    ItemEdit(item: .empty, onSubmit: { newItem in
-                        items.append(newItem)
+                    ItemEdit(item: .constant(.empty), onSubmit: { newItem in
+                        state.addItem(newItem)
                     })
                     .navigationTitle("Create new item")
                 }

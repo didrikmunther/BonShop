@@ -7,49 +7,25 @@
 
 import SwiftUI
 
-let defaultItems = [
-    ItemElement("Bananas"),
-    ItemElement("Apples"),
-]
-
-let defaultLists = [
-    ListElement(items: [
-        ListItemElement(defaultItems[0]),
-        ListItemElement(defaultItems[1])
-    ]),
-    ListElement(items: [
-        ListItemElement(defaultItems[1])
-    ])
-]
-
-class AppState: ObservableObject {
-    @Published var items: [ItemElement]
-    @Published var lists: [ListElement]
-    
-    init() {
-        self.items = defaultItems
-        self.lists = defaultLists
-    }
-}
-
 struct ContentView: View {
     @StateObject var state = AppState()
     
     var body: some View {
         #if os(iOS)
         TabView {
-            ListsView(lists: $state.lists, items: $state.items)
+            ListsView()
                 .tabItem {
                     Image(systemName: "star")
                     Text("Lists")
                 }
 
-            ItemsView(items: $state.items)
+            ItemsView()
                 .tabItem {
                     Image(systemName: "circle.fill")
                     Text("Items")
                 }
         }
+        .environmentObject(state)
         #else
         ScrollView {
             VStack(alignment: .leading) {
